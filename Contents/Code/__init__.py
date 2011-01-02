@@ -8,11 +8,11 @@ PLUGIN_PREFIX	= "/video/canalplus"
 baseURL = "http://webservice.canal-plus.com/rest/bigplayer/"
 
 def Start():
-	Plugin.AddPrefixHandler(PLUGIN_PREFIX, ListeCategories, "Canal Plus", "icon-default.png", "art-default.png")
+	Plugin.AddPrefixHandler(PLUGIN_PREFIX, ListeCategories, "Canal Plus", "icon-default.png", "art-default.jpg")
 	Plugin.AddViewGroup("infoList", viewMode="InfoList", mediaType="items")
 	MediaContainer.title1    = 'Canal Plus'
 	MediaContainer.viewGroup = 'infoList'
-  	MediaContainer.art       = R("art-default.png")
+  	MediaContainer.art       = R("art-default.jpg")
 	
 def CreatePrefs():
 	Prefs.Add(id='qualite', type='enum', default='HD', label='Qualité préférée (si disponible)', values='HD|HQ|LQ')
@@ -37,7 +37,7 @@ def ListeCategories():
 def ListeSousCategories(sender, idCategorie, nomCategorie):
 	art = R("art-cat"+idCategorie+".png")
 	if(art == None):
-		art = R("art-default.png")
+		art = R("art-default.jpg")
 	dir = MediaContainer(title1 = "Canal Plus", title2 = nomCategorie, art = art)
 	sousCategories = XML.ElementFromURL(baseURL + 'initPlayer').xpath("//THEMATIQUE[ID="+idCategorie+"]//SELECTIONS")[0]
 	for sousCategorie in sousCategories:
