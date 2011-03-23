@@ -149,5 +149,5 @@ def ElementVideo(video, titre, description, thumb):
 	if(lien.startswith("http://")):
 		return VideoItem(lien, titre, summary = description, thumb = thumb)
 	else:
-		return RTMPVideoItem(url = url, clip = lien, title = titre, summary = description, thumb = thumb)	
+		return RTMPVideoItem(url = url, width=640, height=375, clip = lien, title = titre, summary = description, thumb = thumb)	
 		
