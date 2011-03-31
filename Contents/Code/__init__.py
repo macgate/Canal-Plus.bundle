@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-from PMS import *
-from PMS.Objects import *
-from PMS.Shortcuts import *
 
 PLUGIN_PREFIX	= "/video/canalplus"
 
@@ -13,10 +10,10 @@ def Start():
 	MediaContainer.title1    = 'Canal Plus'
 	MediaContainer.viewGroup = 'infoList'
   	MediaContainer.art       = R("art-default.jpg")
-	
+
 def CreatePrefs():
-	Prefs.Add(id='qualite', type='enum', default='HD', label='Qualité préférée (si disponible)', values='HD|HQ|LQ')
-	
+  	Prefs.Add(id='qualite', type='enum', default='HD', label='Qualité préférée (si disponible)', values='HD|HQ|LQ')	
+
 #Root categories
 def ListeCategories():
 	dir = MediaContainer()
@@ -108,7 +105,7 @@ def ElementVideo(video, titre, description, thumb):
 		lienLQ = None
 	
 	#Use the wanted quality, if it exists. If not use a lower quality
-	qualitePreferee = Prefs.Get('qualite')
+	qualitePreferee = Prefs['qualite']
 	if(qualitePreferee == 'LQ'):
 		lien = lienLQ
 		
